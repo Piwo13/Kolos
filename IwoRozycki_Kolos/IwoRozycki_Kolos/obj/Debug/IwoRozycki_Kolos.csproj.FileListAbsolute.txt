@@ -1,0 +1,6 @@
+C:\Users\Lenovo\source\repos\IwoRozycki_Kolos\IwoRozycki_Kolos\bin\Debug\IwoRozycki_Kolos.exe.config
+C:\Users\Lenovo\source\repos\IwoRozycki_Kolos\IwoRozycki_Kolos\bin\Debug\IwoRozycki_Kolos.exe
+C:\Users\Lenovo\source\repos\IwoRozycki_Kolos\IwoRozycki_Kolos\bin\Debug\IwoRozycki_Kolos.pdb
+C:\Users\Lenovo\source\repos\IwoRozycki_Kolos\IwoRozycki_Kolos\obj\Debug\IwoRozycki_Kolos.csprojAssemblyReference.cache
+C:\Users\Lenovo\source\repos\IwoRozycki_Kolos\IwoRozycki_Kolos\obj\Debug\IwoRozycki_Kolos.exe
+C:\Users\Lenovo\source\repos\IwoRozycki_Kolos\IwoRozycki_Kolos\obj\Debug\IwoRozycki_Kolos.pdb
