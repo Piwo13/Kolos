@@ -81,5 +81,61 @@ namespace IwoRozycki_Kolos
                 data[r] = temp;
             }
         }
+
+        //pobieramy informacje z tabeli poza ostatnią kolumną która zawiera informacje czy dana osoba ma cukrzycę czy nie
+        public static double[][] Getinputs(this double[][] data)
+        {
+            //klonujemy oryginalna tabele 
+            double[][] Outtab = (double[][])data.Clone();
+            for (int i = 0; i < data.Length; i++)
+            {
+                //zmiejszamy ją o ta ostatnia kolumnę
+                Array.Resize(ref Outtab[i], Outtab[i].Length -1);
+            }
+            return Outtab;
+        }
+        //pobieramy informacje z ostaniej kolumny, czyli oczekiwane wyniki
+        public static double[] Getoutputs(this double[][] data)
+        {
+            double[] Outtab = new double[data.Length];
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                
+                Outtab[i] = data[i][8];
+
+            }
+            return Outtab;
+        }
+        public static double[][][] Splitter(this double[][] tab)
+        {
+            //Outtab dzieli sie na dwie wielowymiarowe tablice, jedna będzie zawierała 30% danych druga 70%
+            double[][][] Outtab = new double[2][][];
+            //wyznaczamy inta którego wykorzystamy do ustalenie długości tablic
+            int split = (int)(tab.Length * 0.3);
+            Outtab[0] = new double[split][];
+            Outtab[1] = new double[tab.Length - split][];
+
+            //Tutaj wyznaczamy 30% danych
+            for (int i = 0; i < split; i++)
+            {
+                Outtab[0][i] = new double[tab[i].Length];
+                for (int j = 0; j < tab[i].Length; j++)
+                {
+                    Outtab[0][i][j] = tab[i][j];
+                }
+            }
+            //tutaj wyznaczamy pozostałe 70% danych
+            for (int i = split; i < tab.Length; i++)
+            {
+                Outtab[1][i - split] = new double[tab[i].Length];
+                for (int j = 0; j < tab[i].Length; j++)
+                {
+                    Outtab[1][i - split][j] = tab[i][j];
+                }
+            }
+
+            return Outtab;
+        }
     }
 }

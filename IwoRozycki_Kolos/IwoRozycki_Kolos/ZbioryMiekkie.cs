@@ -8,10 +8,11 @@ using System.IO;
 namespace IwoRozycki_Kolos
 {
     static class ZbioryMiekkie
-    {
+    {   //Wczytanie danych w podobny sposób jak było to zrobione w WczytDanych.cs
         public static double[][] Dane(string path)
         {
             string[] linie = File.ReadAllLines(path);
+            //Pomijamy pierwszą linijkę która zawiera tytuły kolumn
             linie = linie.Skip(1).ToArray();
             double[][] tab = new double[linie.Length][];
 
@@ -26,18 +27,6 @@ namespace IwoRozycki_Kolos
                 }
             }
             return tab;
-        }
-
-        public static double Max(double[] tab)
-        {
-            double max = tab[0];
-
-            for (int i = 0; i < tab.Length; i++)
-            {
-                if (tab[i] > max)
-                    max = tab[i];
-            }
-            return max;
         }
 
         public static void Normnround(this double[][] tab)
@@ -57,31 +46,36 @@ namespace IwoRozycki_Kolos
                 for (int j = 0; j < tab.Length; j++)
                 {//działanie normalizacji na wszystkich danych pomijając ostatnią kolumnę
                     tab[j][i] = (tab[j][i] - min) / (max - min);
+                    //Zaokrąglenie wartości do 1 lub 0 aby można było użyc zbioru miękkiego
                     tab[j][i] = Math.Round(tab[j][i], MidpointRounding.AwayFromZero);
                 }
             }
         }
-
+        //Funkcja wykonująca działania w zbiorach miękkich
         public static void Zmiekkie(double[][] tab, double[] wagi)
         {
             double[] sumy = new double[tab.Length];
             for (int i = 0; i < tab.Length; i++)
-            {
+            {//tutaj wykonujemy mnożenie wszystkich wierszy z tabeli danych przez podane przez użytkownika wagi i zbieramy sumy dla każdego wiersza
                 double x = 0;
 
                 for (int j = 0; j < wagi.Length; j++)
                 {
                     x += wagi[j] * tab[i][j];
                 }
+                //zapisujemy te sumy do tabeli
                 sumy[i] = x;
             }
-            double max = ZbioryMiekkie.Max(sumy);
+            //Wyszukujemy największej sumy
+            double max = sumy.Max();
 
             for (int i = 0; i < sumy.Length; i++)
-            {
+            {//iterujemy po tablicy sum i jak znajdziemy tą największą to wypisujemy numer o jeden większy gdyż przedmioty w tablicy numerowane są od zera
                 if (max == sumy[i])
                     Console.WriteLine($"Najbliżej podanym wartością pasuje osoba nr {i + 1}");
             }
         }
+       
+
     }
 }

@@ -43,6 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NeuralNetwork\ActivationFunctions\SigmoidActivationFunction.cs" />
+    <Compile Include="NeuralNetwork\ActivationFunctions\TanhActivationFunction.cs" />
+    <Compile Include="NeuralNetwork\ActivationFunctions\SoftplusActivationFunction.cs" />
+    <Compile Include="NeuralNetwork\ActivationFunctions\IActivationFunction.cs" />
+    <Compile Include="NeuralNetwork\Network.cs" />
+    <Compile Include="NeuralNetwork\Layer.cs" />
+    <Compile Include="NeuralNetwork\Synapse.cs" />
+    <Compile Include="NeuralNetwork\Neuron.cs" />
+    <Compile Include="NeuralNetwork\InputFunctions\WeightedSumFunction.cs" />
+    <Compile Include="NeuralNetwork\InputFunctions\IInputFunction.cs" />
     <Compile Include="ZbioryMiekkie.cs" />
     <Compile Include="WczytDanych.cs" />
     <Compile Include="Program.cs" />
@@ -51,5 +61,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
